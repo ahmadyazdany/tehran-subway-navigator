@@ -1,4 +1,4 @@
-# 🚇 Tehran Subway Route Finder
+# 🚇 Tehran Subway Navigator
 
 ![Tehran Subway Route Finder Banner](docs/images/tehran-subway-banner.png)
 
