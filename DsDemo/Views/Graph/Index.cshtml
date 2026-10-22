@@ -1,0 +1,55 @@
+﻿@using DsDemo.ViewModels;
+@model StationsViewModel
+@section BreadCrumb{
+}
+
+<section class="mt-2 min-vh-50">
+    <div class="container">
+        <div class="row pt-4">
+            <div class="d-none d-sm-inline-block col-sm-3 col-md-4"></div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card">
+                    <form class="row p-2" method="post" action="/graph" id="main-form">
+                        <h1 class="h4 mb-4 text-gradient text-info">مسیریابی در مترو تهران</h1>
+                        <div class="form-group col-12 mb-3">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">مبدا</span>
+                                <select class="form-control" asp-for="DepartureId" asp-items="ViewBag.Stations">
+                                    <option value="">لطفا مبدا را انتخاب کنید!</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="DepartureId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">مقصد</span>
+                                <select class="form-control" asp-for="DestinationId" asp-items="ViewBag.Stations">
+                                    <option value="">لطفا مبدا را انتخاب کنید!</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="DestinationId" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mt-2 text-center">
+                            <button class="btn bg-gradient-info btn-sm" type="submit">مسیریابی</button>
+                        </div>
+                    </form>
+                    @if (Model is not null && Model.Stations is not null && Model.Stations.Count() > 0)
+                    {
+                        <div class="p-3">
+                            @foreach (var item in Model.Stations)
+                            {
+                               <div style="background-color:@item.Colors.Split('@').First();width:100%;border-radius:10px;padding:10px;color:white;text-align:center;margin-bottom:10px;">
+                                   @item.Name
+                               </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    @*<script src="~/adminassets/js/plugins/choices.min.js"></script>*@
+}
